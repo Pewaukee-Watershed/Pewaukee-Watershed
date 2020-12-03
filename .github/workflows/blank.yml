@@ -27,3 +27,6 @@ jobs:
     
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
+      
+      - name: Start Node
+        run: node index.js
