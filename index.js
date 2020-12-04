@@ -1,5 +1,6 @@
 const core = require('@actions/core')
 const glob = require('@actions/glob')
+const fs = require('fs')
 
 console.log('Finding Files')
 console.time('find');
@@ -7,7 +8,10 @@ console.time('find');
   const globber = await glob.create('**/*.md\n!**/node_modules')
   const files = await globber.glob()
   
-  console.log(files)
+  await Promise.all(files.map(async file => {
+    const text = await fs.readFile(file, 'utf8')
+    console.log(text)
+  }))
 })()
   .then(() => {
     console.timeEnd('find')
