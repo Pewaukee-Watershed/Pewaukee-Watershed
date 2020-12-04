@@ -4,11 +4,10 @@ const glob = require('@actions/glob')
 console.log('Finding Files')
 console.time('find');
 (async () => {
-  const globber = await glob.create('**/*.md')
+  const globber = await glob.create('**/*.md\n!**/node_modules')
   const files = await globber.glob()
   
   console.log(files)
-  console.log(__dirname)
 })()
   .then(() => {
     console.timeEnd('find')
