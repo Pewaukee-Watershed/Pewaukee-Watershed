@@ -1,10 +1,7 @@
 const core = require('@actions/core')
 const glob = require('@actions/glob')
 
-console.log(process.versions)
-
 console.log('Finding Files')
-console.time('find')
 (async () => {
   
 })()
