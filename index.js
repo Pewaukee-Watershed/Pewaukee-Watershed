@@ -1,6 +1,9 @@
 const core = require('@actions/core')
 const glob = require('@actions/glob')
+const github = require('@actions/github')
 const fs = require('fs').promises
+
+console.log(process.env)
 
 console.log('Finding Files')
 console.time('find');
