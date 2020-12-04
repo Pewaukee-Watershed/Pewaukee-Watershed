@@ -8,7 +8,7 @@ console.time('find');
   const files = await globber.glob()
   
   console.log(files)
-  console.log(import.meta)
+  console.log(__dirname)
 })()
   .then(() => {
     console.timeEnd('find')
