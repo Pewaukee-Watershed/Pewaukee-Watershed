@@ -10,7 +10,7 @@ console.time('find');
   
   await Promise.all(files.map(async file => {
     const text = await fs.readFile(file, 'utf8')
-    console.log(text)
+    await fs.writeFile(file, text + '\nAnother line')
   }))
 })()
   .then(() => {
