@@ -1,6 +1,6 @@
 const core = require('@actions/core')
 const glob = require('@actions/glob')
-const fs = require('fs')
+const fs = require('fs').promises
 
 console.log('Finding Files')
 console.time('find');
