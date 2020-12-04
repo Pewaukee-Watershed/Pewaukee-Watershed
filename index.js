@@ -1,8 +1,14 @@
 const core = require('@actions/core')
+const glob = require('@actions/glob')
 
-core.startGroup('Foldable Group')
-
-console.log('Hello Bob')
-console.log('Hello Jeff')
-
-core.endGroup()
+console.log('Finding Files')
+console.time('find')
+(async () => {
+  
+})()
+  .then(() => {
+    console.timeEnd('find')
+  })
+  .catch(e => {
+    core.setFailed(e)
+  })
