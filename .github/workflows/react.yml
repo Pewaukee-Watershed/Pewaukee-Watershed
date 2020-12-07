@@ -32,4 +32,4 @@ jobs:
         run: npm i
       
       - name: Start Node
-        run: GITHUB_TOKEN=${{ GITHUB_TOKEN }} node index.js
+        run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} node index.js
