@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Transform React
 
 # Controls when the action will run. 
 on:
@@ -32,4 +32,4 @@ jobs:
         run: npm i
       
       - name: Start Node
-        run: node index.js
+        run: GITHUB_TOKEN=${{ GITHUB_TOKEN }} node index.js
