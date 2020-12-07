@@ -3,12 +3,10 @@ const glob = require('@actions/glob')
 const github = require('@actions/github')
 const fs = require('fs').promises
 
-console.log(process.env)
-
 console.log('Finding Files')
 console.time('find');
 (async () => {
-  const globber = await glob.create('**/*.jsc\n!**/node_modules')
+  const globber = await glob.create('**/*.jsx\n!**/node_modules')
   const files = await globber.glob()
   
   await Promise.all(files.map(async file => {
