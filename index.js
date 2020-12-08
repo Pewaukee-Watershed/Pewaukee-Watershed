@@ -2,6 +2,8 @@ import core from '@actions/core'
 import glob from '@actions/glob'
 import github from '@actions/github'
 import babel from '@babel/core'
+import React from 'react'
+import ReactDOM from 'react-dom'
 import fs from 'fs/promises'
 import path from 'path'
 
@@ -26,6 +28,11 @@ console.time('transform');
       content: code,
       encoding: 'utf-8'
     })
+    await fs.writeFile(file, code)
+    const { default: App } = await import(file)
+    console.log(App)
+    console.log(React.createElement(App))
+    console.log(ReactDOM.renderToString(React.createElement(App)))
     return {
       file: path.relative(process.cwd(), file),
       sha: blob.data.sha
