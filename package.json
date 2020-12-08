@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/glob": "^0.1.1",
