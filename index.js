@@ -1,9 +1,9 @@
-const core = require('@actions/core')
-const glob = require('@actions/glob')
-const github = require('@actions/github')
-const babel = require('@babel/core')
-const fs = require('fs').promises
-const path = require('path')
+import core from '@actions/core'
+import glob from '@actions/glob'
+import github from '@actions/github'
+import babel from '@babel/core'
+import fs from 'fs/promises'
+import path from 'path'
 
 console.log('Finding Files')
 console.time('transform');
