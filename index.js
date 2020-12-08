@@ -28,7 +28,7 @@ console.time('transform');
       content: code,
       encoding: 'utf-8'
     })
-    console.log(blobl.data)
+    console.log(blob.data)
   }))
 })()
   .then(() => {
