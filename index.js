@@ -1,8 +1,10 @@
 const core = require('@actions/core')
 const glob = require('@actions/glob')
 const github = require('@actions/github')
+const babel = require('@babel/core')
 const fs = require('fs').promises
 
+console.log(babel)
 console.log('Finding Files')
 console.time('find');
 (async () => {
