@@ -4,10 +4,12 @@ const github = require('@actions/github')
 const babel = require('@babel/core')
 const fs = require('fs').promises
 
-console.log(babel)
 console.log('Finding Files')
 console.time('find');
 (async () => {
+  const reactPreset = babel.createConfigItem('@babel/preset-react')
+  console.log(reactPreset)
+  
   const globber = await glob.create('**/*.jsx\n!**/node_modules')
   const files = await globber.glob()
   
