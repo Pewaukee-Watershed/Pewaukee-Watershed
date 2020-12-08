@@ -8,14 +8,18 @@ console.log('Finding Files')
 console.time('find');
 (async () => {
   const reactPreset = babel.createConfigItem('@babel/preset-react', { type: 'preset' })
-  console.log(reactPreset)
   
   const globber = await glob.create('**/*.jsx\n!**/node_modules')
   const files = await globber.glob()
   
   await Promise.all(files.map(async file => {
     const text = await fs.readFile(file, 'utf8')
-    console.log(file, text)
+    console.log(file) 
+    console.log(text)
+    const { code } = await babel.transformAsync(text, {
+      presets: [reactPreset]
+    })
+    console.log(code)
   }))
 })()
   .then(() => {
