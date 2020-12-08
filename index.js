@@ -7,7 +7,7 @@ const fs = require('fs').promises
 console.log('Finding Files')
 console.time('find');
 (async () => {
-  const reactPreset = babel.createConfigItem('@babel/preset-react')
+  const reactPreset = babel.createConfigItem('@babel/preset-react', 'preset')
   console.log(reactPreset)
   
   const globber = await glob.create('**/*.jsx\n!**/node_modules')
