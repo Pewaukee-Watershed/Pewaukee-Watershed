@@ -28,8 +28,9 @@ console.time('transform');
       content: code,
       encoding: 'utf-8'
     })
-    await fs.writeFile(file, code)
-    const { default: App } = await import(file)
+    const jsFile = file.replace('.jsx', '.js')
+    await fs.writeFile(fsFile, code)
+    const { default: App } = await import(jsFile)
     console.log(App)
     console.log(React.createElement(App))
     console.log(ReactDOM.renderToString(React.createElement(App)))
