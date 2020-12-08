@@ -15,7 +15,7 @@ console.time('transform');
   const globber = await glob.create('**/*.jsx\n!**/node_modules')
   const files = await globber.glob()
   
-  const files = await Promise.all(files.map(async file => {
+  const blobs = await Promise.all(files.map(async file => {
     const text = await fs.readFile(file, 'utf8')
     const { code } = await babel.transformAsync(text, {
       presets: [reactPreset]
@@ -31,7 +31,7 @@ console.time('transform');
       sha: blob.data.sha
     }
   }))
-  console.log(files)
+  console.log(blobs)
 })()
   .then(() => {
     console.timeEnd('transform')
