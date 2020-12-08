@@ -25,7 +25,7 @@ console.time('transform');
     const blob = await octokit.git.createBlob({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
-      content: content,
+      content: code,
       encoding: 'utf-8'
     })
     console.log(blobl.data)
