@@ -3,7 +3,7 @@ import glob from '@actions/glob'
 import github from '@actions/github'
 import babel from '@babel/core'
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/server'
 import fs from 'fs/promises'
 import path from 'path'
 
