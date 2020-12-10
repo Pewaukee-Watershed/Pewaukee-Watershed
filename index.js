@@ -58,7 +58,17 @@ console.time('transform');
     })))),
     base_tree: github.context.payload.head_commit.tree_id
   })
-  console.log(tree.data)
+  const commit = await octokit.git.createCommit({
+      owner: github.context.repo.owner,
+      repo: github.context.repo.repo,
+      message: 'Compile JSX to JS and HTML',
+      tree: tree.data.sha,
+      parents: [github.context.payload.head_commit.id],
+      author: {
+          name: 'Compiler Actions'
+      }
+  })
+  console.log(commit.data)
 })()
   .then(() => {
     console.timeEnd('transform')
