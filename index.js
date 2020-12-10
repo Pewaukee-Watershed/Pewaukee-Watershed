@@ -39,7 +39,7 @@ console.time('transform');
 <!DOCTYPE html>
 <html>
 <head>
-  <script type="module" src="/render.js?component${jsPath}"></script>
+  <script type="module" src="/render.js?component=${jsPath}"></script>
 </head>
 <body>
   <div id="app">
