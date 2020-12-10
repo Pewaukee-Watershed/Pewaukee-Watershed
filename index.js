@@ -13,7 +13,7 @@ console.time('transform');
   const createBlob = async text => await octokit.git.createBlob({
     owner: github.context.repo.owner,
     repo: github.context.repo.repo,
-    content: code,
+    content: text,
     encoding: 'utf-8'
   })
   
