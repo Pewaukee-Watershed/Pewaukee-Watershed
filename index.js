@@ -29,7 +29,7 @@ console.time('transform');
     const { code } = await babel.transformAsync(text, {
       presets: [reactPreset]
     })
-    const jsBlob = await createBlob(code)
+    const jsBlob = await createBlob(`const React = window.react\n${code}`)
     const jsFile = file.replace('.jsx', '.js')
     await fs.writeFile(jsFile, `import React from 'react'\n${code}`)
     const { default: App } = await import(jsFile)
