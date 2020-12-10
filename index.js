@@ -45,5 +45,5 @@ console.time('transform');
     console.timeEnd('transform')
   })
   .catch(e => {
-    core.setFailed(e)
+    core.setFailed(e.stack)
   })
