@@ -48,7 +48,17 @@ console.time('transform');
       }
     }
   }))
-  console.log(blobs)
+  const tree = await octokit.git.createTree({
+    owner: github.context.repo.owner,
+    repo: github.context.repo.repo,
+    tree: [].concat(...blobs.map(({ js, html }) => [js, html].map(({ file, sha }) => ({
+      path: file,
+      sha: sha,
+      mode: '100644'
+    })))),
+    base_tree: github.context.payload.head_commit.tree_id
+  })
+  console.log(tree.data)
 })()
   .then(() => {
     console.timeEnd('transform')
