@@ -69,7 +69,12 @@ console.time('transform');
           email: 'compiler-actions[bot]'
       }
   })
-  console.log(commit.data)
+  await octokit.git.updateRef({
+      owner: github.context.repo.owner,
+      repo: github.context.repo.repo,
+      ref: github.context.ref.slice(5),
+      sha: commit.data.sha
+  })
 })()
   .then(() => {
     console.timeEnd('transform')
