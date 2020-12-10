@@ -34,7 +34,17 @@ console.time('transform');
     await fs.writeFile(jsFile, `import React from 'react'\n${code}`)
     const { default: App } = await import(jsFile)
     const app = React.createElement(App)
-    const html = ReactDOM.renderToString(app)
+    const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="module" src="./${path.basename(jsFile)}"></script>
+</head>
+<body>
+  ${ReactDOM.renderToString(app)}
+</body>
+</html>
+`
     const htmlBlob = await createBlob(html)
     const htmlFile = file.replace('.jsx', '.html')
     return {
