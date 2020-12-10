@@ -43,8 +43,8 @@ console.time('transform');
         sha: jsBlob.data.sha
       },
       html: {
-        file: path.relative(process.cwd(), htmlFile)
-        sha: htmlBLob.data.sha
+        file: path.relative(process.cwd(), htmlFile),
+        sha: htmlBlob.data.sha
       }
     }
   }))
