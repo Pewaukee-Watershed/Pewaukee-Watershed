@@ -65,7 +65,8 @@ console.time('transform');
       tree: tree.data.sha,
       parents: [github.context.payload.head_commit.id],
       author: {
-          name: 'Compiler Actions'
+          name: 'Compiler Actions',
+          email: 'compiler-actions[bot]'
       }
   })
   console.log(commit.data)
