@@ -31,6 +31,7 @@ console.time('transform');
     })
     const jsBlob = await createBlob(`const React = window.react\n${code}`)
     const jsFile = file.replace('.jsx', '.js')
+    const jsPath = path.relative(process.cwd(), jsFile)
     await fs.writeFile(jsFile, `import React from 'react'\n${code}`)
     const { default: App } = await import(jsFile)
     const app = React.createElement(App)
@@ -38,10 +39,12 @@ console.time('transform');
 <!DOCTYPE html>
 <html>
 <head>
-  <script type="module" src="./${path.basename(jsFile)}"></script>
+  <script type="module" src="/render.js?component${jsPath}"></script>
 </head>
 <body>
-  ${ReactDOM.renderToString(app)}
+  <div id="app">
+    ${ReactDOM.renderToString(app)}
+  </div>
 </body>
 </html>
 `
@@ -49,7 +52,7 @@ console.time('transform');
     const htmlFile = file.replace('.jsx', '.html')
     return {
       js: {
-        file: path.relative(process.cwd(), jsFile),
+        file: jsPath,
         sha: jsBlob.data.sha
       },
       html: {
